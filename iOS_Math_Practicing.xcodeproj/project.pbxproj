@@ -45,11 +45,6 @@
 		B592A9321AFAE1A10014FC4C /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B592A9311AFAE1A10014FC4C /* MyScene.m */; };
 		B592A9341AFAE1A10014FC4C /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = B592A9331AFAE1A10014FC4C /* Spaceship.png */; };
 		B592A9361AFAE1A10014FC4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B592A9351AFAE1A10014FC4C /* Images.xcassets */; };
-		B592A93D1AFAE1A10014FC4C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592A93C1AFAE1A10014FC4C /* XCTest.framework */; };
-		B592A93E1AFAE1A10014FC4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592A9161AFAE1A10014FC4C /* Foundation.framework */; };
-		B592A93F1AFAE1A10014FC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592A91A1AFAE1A10014FC4C /* UIKit.framework */; };
-		B592A9471AFAE1A10014FC4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B592A9451AFAE1A10014FC4C /* InfoPlist.strings */; };
-		B592A9491AFAE1A10014FC4C /* Try_Shoot_learningTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B592A9481AFAE1A10014FC4C /* Try_Shoot_learningTests.m */; };
 		B592A9541AFAE3B90014FC4C /* TextureHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B592A9531AFAE3B90014FC4C /* TextureHelper.m */; };
 		B592A9571AFB09FC0014FC4C /* MyUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B592A9561AFB09FC0014FC4C /* MyUtils.m */; };
 		B592A9631AFB0F450014FC4C /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = B592A9581AFB0F440014FC4C /* dot.png */; };
@@ -87,32 +82,18 @@
 		B592A9991AFB160A0014FC4C /* hand3.png in Resources */ = {isa = PBXBuildFile; fileRef = B592A9961AFB160A0014FC4C /* hand3.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B592A9401AFAE1A10014FC4C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B592A90B1AFAE1A10014FC4C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B592A9121AFAE1A10014FC4C;
-			remoteInfo = Try_Shoot_learning;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		B55A64261B7B318C00280B92 /* am_white.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = am_white.mp3; sourceTree = "<group>"; };
 		B55A64281B7B386300280B92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B55A64291B7B386300280B92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B55A642D1B7B38DC00280B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B55A642F1B7B38DE00280B92 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B55A64301B7B38E000280B92 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B55A64311B7B39DF00280B92 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B55A64321B7B39DF00280B92 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B55A64331B7B39DF00280B92 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B55A64341B7B39EA00280B92 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B55A64351B7B39EA00280B92 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		B55A64361B7B39EA00280B92 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B55A64371B7B39F200280B92 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B55A64381B7B39F200280B92 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		B55A64391B7B39F200280B92 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		B56E0C21263FE62200648B87 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B57312871B5E572C00307D50 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
 		B57312881B5E572C00307D50 /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
@@ -148,10 +129,10 @@
 		B592A9181AFAE1A10014FC4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B592A91A1AFAE1A10014FC4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B592A91C1AFAE1A10014FC4C /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
-		B592A9201AFAE1A10014FC4C /* Try_Shoot_learning-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Try_Shoot_learning-Info.plist"; sourceTree = "<group>"; };
+		B592A9201AFAE1A10014FC4C /* iOS_Math_Practicing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOS_Math_Practicing-Info.plist"; sourceTree = "<group>"; };
 		B592A9221AFAE1A10014FC4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B592A9241AFAE1A10014FC4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B592A9261AFAE1A10014FC4C /* Try_Shoot_learning-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Try_Shoot_learning-Prefix.pch"; sourceTree = "<group>"; };
+		B592A9261AFAE1A10014FC4C /* iOS_Math_Practicing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iOS_Math_Practicing-Prefix.pch"; sourceTree = "<group>"; };
 		B592A9271AFAE1A10014FC4C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B592A9281AFAE1A10014FC4C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B592A92B1AFAE1A10014FC4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -161,11 +142,7 @@
 		B592A9311AFAE1A10014FC4C /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
 		B592A9331AFAE1A10014FC4C /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		B592A9351AFAE1A10014FC4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B592A93B1AFAE1A10014FC4C /* Try_Shoot_learningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Try_Shoot_learningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B592A93C1AFAE1A10014FC4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B592A9441AFAE1A10014FC4C /* Try_Shoot_learningTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Try_Shoot_learningTests-Info.plist"; sourceTree = "<group>"; };
-		B592A9461AFAE1A10014FC4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B592A9481AFAE1A10014FC4C /* Try_Shoot_learningTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Try_Shoot_learningTests.m; sourceTree = "<group>"; };
 		B592A9521AFAE3B90014FC4C /* TextureHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureHelper.h; sourceTree = "<group>"; };
 		B592A9531AFAE3B90014FC4C /* TextureHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureHelper.m; sourceTree = "<group>"; };
 		B592A9551AFB09FC0014FC4C /* MyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyUtils.h; sourceTree = "<group>"; };
@@ -217,24 +194,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B592A9381AFAE1A10014FC4C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B592A93D1AFAE1A10014FC4C /* XCTest.framework in Frameworks */,
-				B592A93F1AFAE1A10014FC4C /* UIKit.framework in Frameworks */,
-				B592A93E1AFAE1A10014FC4C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B592A90A1AFAE1A10014FC4C = {
 			isa = PBXGroup;
 			children = (
-				B592A91E1AFAE1A10014FC4C /* Try_Shoot_learning */,
-				B592A9421AFAE1A10014FC4C /* Try_Shoot_learningTests */,
+				B592A91E1AFAE1A10014FC4C /* iOS_Math_Practicing */,
 				B592A9151AFAE1A10014FC4C /* Frameworks */,
 				B592A9141AFAE1A10014FC4C /* Products */,
 			);
@@ -244,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				B592A9131AFAE1A10014FC4C /* ShootLearning.app */,
-				B592A93B1AFAE1A10014FC4C /* Try_Shoot_learningTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -261,7 +226,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B592A91E1AFAE1A10014FC4C /* Try_Shoot_learning */ = {
+		B592A91E1AFAE1A10014FC4C /* iOS_Math_Practicing */ = {
 			isa = PBXGroup;
 			children = (
 				B57312921B60671900307D50 /* bgMainMenu-hd.png */,
@@ -343,35 +308,17 @@
 				B592A9351AFAE1A10014FC4C /* Images.xcassets */,
 				B592A91F1AFAE1A10014FC4C /* Supporting Files */,
 			);
-			path = Try_Shoot_learning;
+			path = iOS_Math_Practicing;
 			sourceTree = "<group>";
 		};
 		B592A91F1AFAE1A10014FC4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B592A9201AFAE1A10014FC4C /* Try_Shoot_learning-Info.plist */,
+				B592A9201AFAE1A10014FC4C /* iOS_Math_Practicing-Info.plist */,
 				B592A9211AFAE1A10014FC4C /* InfoPlist.strings */,
 				B592A9241AFAE1A10014FC4C /* main.m */,
-				B592A9261AFAE1A10014FC4C /* Try_Shoot_learning-Prefix.pch */,
+				B592A9261AFAE1A10014FC4C /* iOS_Math_Practicing-Prefix.pch */,
 				B55A642E1B7B38DC00280B92 /* Localizable.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B592A9421AFAE1A10014FC4C /* Try_Shoot_learningTests */ = {
-			isa = PBXGroup;
-			children = (
-				B592A9481AFAE1A10014FC4C /* Try_Shoot_learningTests.m */,
-				B592A9431AFAE1A10014FC4C /* Supporting Files */,
-			);
-			path = Try_Shoot_learningTests;
-			sourceTree = "<group>";
-		};
-		B592A9431AFAE1A10014FC4C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B592A9441AFAE1A10014FC4C /* Try_Shoot_learningTests-Info.plist */,
-				B592A9451AFAE1A10014FC4C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -379,9 +326,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B592A9121AFAE1A10014FC4C /* Try_Shoot_learning */ = {
+		B592A9121AFAE1A10014FC4C /* iOS_Math_Practicing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B592A94C1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "Try_Shoot_learning" */;
+			buildConfigurationList = B592A94C1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "iOS_Math_Practicing" */;
 			buildPhases = (
 				B592A90F1AFAE1A10014FC4C /* Sources */,
 				B592A9101AFAE1A10014FC4C /* Frameworks */,
@@ -391,28 +338,10 @@
 			);
 			dependencies = (
 			);
-			name = Try_Shoot_learning;
+			name = iOS_Math_Practicing;
 			productName = Try_Shoot_learning;
 			productReference = B592A9131AFAE1A10014FC4C /* ShootLearning.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B592A93A1AFAE1A10014FC4C /* Try_Shoot_learningTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B592A94F1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "Try_Shoot_learningTests" */;
-			buildPhases = (
-				B592A9371AFAE1A10014FC4C /* Sources */,
-				B592A9381AFAE1A10014FC4C /* Frameworks */,
-				B592A9391AFAE1A10014FC4C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B592A9411AFAE1A10014FC4C /* PBXTargetDependency */,
-			);
-			name = Try_Shoot_learningTests;
-			productName = Try_Shoot_learningTests;
-			productReference = B592A93B1AFAE1A10014FC4C /* Try_Shoot_learningTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -425,14 +354,11 @@
 				TargetAttributes = {
 					B592A9121AFAE1A10014FC4C = {
 						DevelopmentTeam = T6VV6T753H;
-						ProvisioningStyle = Manual;
-					};
-					B592A93A1AFAE1A10014FC4C = {
-						TestTargetID = B592A9121AFAE1A10014FC4C;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = B592A90E1AFAE1A10014FC4C /* Build configuration list for PBXProject "Try_Shoot_learning" */;
+			buildConfigurationList = B592A90E1AFAE1A10014FC4C /* Build configuration list for PBXProject "iOS_Math_Practicing" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -450,8 +376,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B592A9121AFAE1A10014FC4C /* Try_Shoot_learning */,
-				B592A93A1AFAE1A10014FC4C /* Try_Shoot_learningTests */,
+				B592A9121AFAE1A10014FC4C /* iOS_Math_Practicing */,
 			);
 		};
 /* End PBXProject section */
@@ -521,14 +446,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B592A9391AFAE1A10014FC4C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B592A9471AFAE1A10014FC4C /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -551,23 +468,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B592A9371AFAE1A10014FC4C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B592A9491AFAE1A10014FC4C /* Try_Shoot_learningTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B592A9411AFAE1A10014FC4C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B592A9121AFAE1A10014FC4C /* Try_Shoot_learning */;
-			targetProxy = B592A9401AFAE1A10014FC4C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B55A642E1B7B38DC00280B92 /* Localizable.strings */ = {
@@ -601,18 +502,6 @@
 				B592A92B1AFAE1A10014FC4C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B592A9451AFAE1A10014FC4C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B592A9461AFAE1A10014FC4C /* en */,
-				B55A64291B7B386300280B92 /* ja */,
-				B55A64331B7B39DF00280B92 /* ko */,
-				B55A64361B7B39EA00280B92 /* zh-Hant */,
-				B55A64391B7B39F200280B92 /* zh-Hans */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -693,18 +582,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.2105030;
 				DEVELOPMENT_TEAM = T6VV6T753H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Try_Shoot_learning/Try_Shoot_learning-Prefix.pch";
-				INFOPLIST_FILE = "Try_Shoot_learning/Try_Shoot_learning-Info.plist";
+				GCC_PREFIX_HEADER = "iOS_Math_Practicing/iOS_Math_Practicing-Prefix.pch";
+				INFOPLIST_FILE = "iOS_Math_Practicing/iOS_Math_Practicing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_NAME = ShootLearning;
 				PROVISIONING_PROFILE = "d56fb616-2f4f-4dcd-a6d7-8d1e00f83cd7";
-				PROVISIONING_PROFILE_SPECIFIER = ShootLearningProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -716,68 +605,28 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.2.2105030;
 				DEVELOPMENT_TEAM = T6VV6T753H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Try_Shoot_learning/Try_Shoot_learning-Prefix.pch";
-				INFOPLIST_FILE = "Try_Shoot_learning/Try_Shoot_learning-Info.plist";
+				GCC_PREFIX_HEADER = "iOS_Math_Practicing/iOS_Math_Practicing-Prefix.pch";
+				INFOPLIST_FILE = "iOS_Math_Practicing/iOS_Math_Practicing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_NAME = ShootLearning;
 				PROVISIONING_PROFILE = "d56fb616-2f4f-4dcd-a6d7-8d1e00f83cd7";
-				PROVISIONING_PROFILE_SPECIFIER = ShootLearningProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
-		B592A9501AFAE1A10014FC4C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Try_Shoot_learning.app/Try_Shoot_learning";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Try_Shoot_learning/Try_Shoot_learning-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Try_Shoot_learningTests/Try_Shoot_learningTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B592A9511AFAE1A10014FC4C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Try_Shoot_learning.app/Try_Shoot_learning";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Try_Shoot_learning/Try_Shoot_learning-Prefix.pch";
-				INFOPLIST_FILE = "Try_Shoot_learningTests/Try_Shoot_learningTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B592A90E1AFAE1A10014FC4C /* Build configuration list for PBXProject "Try_Shoot_learning" */ = {
+		B592A90E1AFAE1A10014FC4C /* Build configuration list for PBXProject "iOS_Math_Practicing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B592A94A1AFAE1A10014FC4C /* Debug */,
@@ -786,20 +635,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B592A94C1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "Try_Shoot_learning" */ = {
+		B592A94C1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "iOS_Math_Practicing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B592A94D1AFAE1A10014FC4C /* Debug */,
 				B592A94E1AFAE1A10014FC4C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B592A94F1AFAE1A10014FC4C /* Build configuration list for PBXNativeTarget "Try_Shoot_learningTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B592A9501AFAE1A10014FC4C /* Debug */,
-				B592A9511AFAE1A10014FC4C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
