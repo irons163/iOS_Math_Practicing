@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="LVB-YS-i5n">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="LVB-YS-i5n">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,13 +16,14 @@
                         <viewControllerLayoutGuide type="bottom" id="aVg-JY-jeM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bdc-N1-crn" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="139" y="46"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="uu7-oY-SIR">
@@ -33,14 +34,14 @@
                         <viewControllerLayoutGuide type="bottom" id="Qud-jb-QMk"/>
                     </layoutGuides>
                     <view key="view" alpha="0.89999997615814209" contentMode="scaleToFill" id="WOK-zi-7Vu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geme_fail_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="YRA-TY-E2g">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geme_fail_bg" translatesAutoresizingMaskIntoConstraints="NO" id="YRA-TY-E2g">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gameover.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-vJ-M4z">
-                                <rect key="frame" x="0.0" y="125" width="320" height="102"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gameover" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-vJ-M4z">
+                                <rect key="frame" x="47" y="385" width="320" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="NSH-Tj-S3G"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="b1c-pX-qpi"/>
@@ -52,40 +53,40 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWD-cl-FHm">
-                                <rect key="frame" x="110" y="307" width="100" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWD-cl-FHm">
+                                <rect key="frame" x="157" y="537" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="RAr-NW-vat"/>
                                     <constraint firstAttribute="height" constant="50" id="hbW-J5-UVg"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="en_restart_btn01png.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button" image="en_restart_btn01png">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <state key="highlighted" image="en_restart_btn02png.png"/>
+                                <state key="highlighted" image="en_restart_btn02png"/>
                                 <connections>
                                     <action selector="restartClick:" destination="Ezd-QP-Hxu" eventType="touchUpInside" id="bdU-9k-uhC"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-yq-KfO">
-                                <rect key="frame" x="34" y="235" width="175" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-yq-KfO">
+                                <rect key="frame" x="107" y="493" width="104" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="YwS-34-aYH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-D3-1vl">
-                                <rect key="frame" x="144" y="241" width="146" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-D3-1vl">
+                                <rect key="frame" x="221" y="496" width="88" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="tWn-t4-94T"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tWD-cl-FHm" firstAttribute="top" secondItem="RQM-yq-KfO" secondAttribute="bottom" constant="17" id="227-pP-Tir"/>
                             <constraint firstItem="RQM-yq-KfO" firstAttribute="left" secondItem="WOK-zi-7Vu" secondAttribute="centerX" constant="100" id="4nO-x6-Y7u"/>
@@ -121,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4J-01-Pvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="686" y="321"/>
+            <point key="canvasLocation" x="994.20289855072474" y="214.95535714285714"/>
         </scene>
         <!--Game Win View Controller-->
         <scene sceneID="LVD-zJ-Krd">
@@ -132,14 +133,14 @@
                         <viewControllerLayoutGuide type="bottom" id="RJD-0V-h0V"/>
                     </layoutGuides>
                     <view key="view" alpha="0.89999997615814209" contentMode="scaleToFill" id="jMt-sb-e7Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geme_fail_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="7FW-jx-ydk">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geme_fail_bg" translatesAutoresizingMaskIntoConstraints="NO" id="7FW-jx-ydk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="win.png" translatesAutoresizingMaskIntoConstraints="NO" id="asF-BD-wSV">
-                                <rect key="frame" x="0.0" y="125" width="320" height="102"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="asF-BD-wSV">
+                                <rect key="frame" x="47" y="385" width="320" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="UPE-a6-BOF"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="X5l-id-Wig"/>
@@ -151,40 +152,40 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-19-OXW">
-                                <rect key="frame" x="34" y="235" width="175" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-19-OXW">
+                                <rect key="frame" x="107" y="493" width="104" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="104" id="uHa-uG-aRl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3a-pC-H1b">
-                                <rect key="frame" x="144" y="241" width="146" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3a-pC-H1b">
+                                <rect key="frame" x="221" y="496" width="88" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="XzW-oj-Mmh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hP2-TM-sQ8">
-                                <rect key="frame" x="110" y="307" width="100" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hP2-TM-sQ8">
+                                <rect key="frame" x="157" y="537" width="100" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Y7Y-vP-igo"/>
                                     <constraint firstAttribute="height" constant="50" id="omy-HZ-wbM"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="en_restart_btn01png.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Button" image="en_restart_btn01png">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <state key="highlighted" image="en_restart_btn02png.png"/>
+                                <state key="highlighted" image="en_restart_btn02png"/>
                                 <connections>
                                     <action selector="restartClick:" destination="JYp-mK-30l" eventType="touchUpInside" id="yrk-le-4SI"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="asF-BD-wSV" firstAttribute="top" secondItem="14J-pY-opG" secondAttribute="bottom" constant="105" id="4xm-aB-5yY"/>
                             <constraint firstItem="hP2-TM-sQ8" firstAttribute="top" secondItem="MHP-19-OXW" secondAttribute="bottom" constant="17" id="APd-E1-ZBn"/>
@@ -220,19 +221,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RC4-G7-yp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="321"/>
+            <point key="canvasLocation" x="1505.7971014492755" y="214.95535714285714"/>
         </scene>
     </scenes>
     <resources>
-        <image name="en_restart_btn01png.png" width="330" height="150"/>
-        <image name="en_restart_btn02png.png" width="330" height="150"/>
-        <image name="gameover.png" width="432" height="102"/>
-        <image name="geme_fail_bg.png" width="450" height="800"/>
-        <image name="win.png" width="328" height="84"/>
+        <image name="en_restart_btn01png" width="330" height="150"/>
+        <image name="en_restart_btn02png" width="330" height="150"/>
+        <image name="gameover" width="432" height="102"/>
+        <image name="geme_fail_bg" width="450" height="800"/>
+        <image name="win" width="328" height="84"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <nil key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

@@ -2,7 +2,6 @@
 //  MyScene.h
 //  Try_Shoot_learning
 //
-
 //  Copyright (c) 2015年 ___FULLUSERNAME___. All rights reserved.
 //
 
@@ -24,12 +23,12 @@ extern const int TIME_LIMIT_MODE;
 
 @property int gameMode;
 
--(void)setGameRun:(bool)isrun;
+- (void)setGameRun:(bool)isrun;
 
--(int) getAnswerCorrectNUm;
+- (int)getAnswerCorrectNUm;
 
--(int)getGameTime;
+- (int)getGameTime;
 
--(void)setWillChangeGameMode:(int)willChangeGameMode;
+- (void)setWillChangeGameMode:(int)willChangeGameMode;
 
 @end

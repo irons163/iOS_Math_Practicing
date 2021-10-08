@@ -10,11 +10,8 @@
 
 @implementation Cloud
 
-
-
--(void)setNum:(int)num{
+- (void)setNum:(int)num {
     _num = num;
-//    self.numNode = [SKSpriteNode spriteNodeWithTexture:getTexture:num];
     self.numNode = [SKLabelNode labelNodeWithText:[NSString stringWithFormat:@"%d", num]];
     self.numNode.fontColor = [UIColor greenColor];
     self.numNode.fontName = @"Blod";

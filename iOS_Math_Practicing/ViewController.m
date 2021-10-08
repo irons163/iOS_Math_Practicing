@@ -10,22 +10,18 @@
 #import "MyScene.h"
 #import "GameCenterUtil.h"
 
-@implementation ViewController{
-    ADBannerView * adBannerView;
-    MyScene * scene;
+@implementation ViewController {
+    ADBannerView *adBannerView;
+    MyScene *scene;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(echoNotification:) name:@"pauseGame" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(echoNotificationResume:) name:@"resumeGame" object:nil];
     
-    // Configure the view.
-    SKView * skView = (SKView *)self.view;
-//    skView.showsFPS = YES;
-//    skView.showsNodeCount = YES;
+    SKView *skView = (SKView *)self.view;
     
     // Create and configure the scene.
     scene = [MyScene sceneWithSize:skView.bounds.size];
@@ -40,25 +36,23 @@
     adBannerView.alpha = 1.0f;
     [self.view addSubview:adBannerView];
     
-    GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
+    GameCenterUtil *gameCenterUtil = [GameCenterUtil sharedInstance];
     gameCenterUtil.delegate = self;
     [gameCenterUtil isGameCenterAvailable];
     [gameCenterUtil authenticateLocalUser:self];
     [gameCenterUtil submitAllSavedScores];
 }
 
--(void) showRankView{
-    GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
+- (void)showRankView {
+    GameCenterUtil *gameCenterUtil = [GameCenterUtil sharedInstance];
     gameCenterUtil.delegate = self;
     [gameCenterUtil isGameCenterAvailable];
-    //    [gameCenterUtil authenticateLocalUser:self];
     [gameCenterUtil showGameCenter:self];
     [gameCenterUtil submitAllSavedScores];
 }
 
--(void)showGameOver{
-    //    return;
-    GameOverViewController* gameOverDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewController"];
+- (void)showGameOver {
+    GameOverViewController *gameOverDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewController"];
     gameOverDialogViewController.gameDelegate = self;
     
     gameOverDialogViewController.gameTime = [scene getAnswerCorrectNUm];
@@ -68,15 +62,12 @@
     
     [gameOverDialogViewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
-    [self presentViewController:gameOverDialogViewController animated:YES completion:^{
-        //        [reset];
-    }];
+    [self presentViewController:gameOverDialogViewController animated:YES completion:nil];
     
 }
 
--(void)showGameWin{
-    //    return;
-    GameWinViewController* gameWinDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameWinViewController"];
+- (void)showGameWin {
+    GameWinViewController *gameWinDialogViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameWinViewController"];
     gameWinDialogViewController.gameDelegate = self;
     
     gameWinDialogViewController.gameTime = [scene getGameTime];
@@ -86,27 +77,23 @@
     
     [gameWinDialogViewController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
     
-    [self presentViewController:gameWinDialogViewController animated:YES completion:^{
-        //        [reset];
-    }];
+    [self presentViewController:gameWinDialogViewController animated:YES completion:nil];
     
 }
 
--(void)restartGame{
-    SKView * skView = (SKView *)self.view;
+- (void)restartGame {
+    SKView *skView = (SKView *)self.view;
     [self initAndaddScene:skView];
 }
 
--(void)initAndaddScene:(SKView*)skView{
-    // Create and configure the scene.
-    // Create and configure the scene.
+- (void)initAndaddScene:(SKView*)skView {
     int mode = scene.gameMode;
     scene = [MyScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.gameDelegate = self;
     scene.gameMode = mode;
     [scene setWillChangeGameMode:mode];
-    // Present the scene.
+    
     [skView presentScene:scene];
 }
 
@@ -114,40 +101,31 @@
     [self pauseGame];
 }
 
-- (void)echoNotificationResume:(NSNotification *)notification{
+- (void)echoNotificationResume:(NSNotification *)notification {
     [scene setGameRun:true];
 }
 
--(void)pauseGame{
+- (void)pauseGame {
     [scene setGameRun:false];
 }
 
--(void)bannerViewDidLoadAd:(ADBannerView *)banner{
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     [self layoutAnimated:true];
 }
 
 
--(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error{
-    //    [adBannerView removeFromSuperview];
-    //    adBannerView.delegate = nil;
-    //    adBannerView = nil;
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     [self layoutAnimated:true];
 }
 
--(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{
-    //    [MyScene setAllGameRun:NO];
+- (BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave {
     return true;
 }
 
-- (void)layoutAnimated:(BOOL)animated
-{
-    //    CGRect contentFrame = self.view.bounds;
-    
+- (void)layoutAnimated:(BOOL)animated {
     CGRect contentFrame = self.view.bounds;
-    //    contentFrame.origin.y = -50;
     CGRect bannerFrame = adBannerView.frame;
-    if (adBannerView.bannerLoaded)
-    {
+    if (adBannerView.bannerLoaded) {
         //        contentFrame.size.height -= adBannerView.frame.size.height;
         contentFrame.size.height = 0;
         bannerFrame.origin.y = contentFrame.size.height;
@@ -163,13 +141,11 @@
     }];
 }
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
+- (NSUInteger)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -177,13 +153,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
-
--(void)dealloc{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

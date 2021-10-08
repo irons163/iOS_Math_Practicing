@@ -11,7 +11,7 @@
 @implementation Bullet
 
 - (id)init {
-    if (self=[super init]) {
+    if (self = [super init]) {
         self.hitPower = 1;
     }
     return self;

@@ -24,7 +24,6 @@ int GAME_TIME_LIMIT_LEVEL2_START_LEVEL = 3;
 int GAME_TIME_LIMIT_LEVEL3_START_LEVEL = 6;
 int GAME_TIME_LIMIT_LEVEL4_START_LEVEL = 9;
 int GAME_TIME_LIMIT_LEVEL5_START_LEVEL = 12;
-//int GAME_TIME_LIMIT_SUCCESS_LEVEL = 10;
 
 const int NONE_MODE = -1;
 const int INFINITY_MODE = 0;
@@ -40,49 +39,45 @@ const int CLOUD_LEVEL5_MOVE_SPEED = 15;
 int maxTime = 60;
 
 @implementation MyScene{
-    SKSpriteNode * player;
-    SKSpriteNode * controlPoint;
-    SKSpriteNode * pauseBtnNode;
+    SKSpriteNode *player;
+    SKSpriteNode *controlPoint;
+    SKSpriteNode *pauseBtnNode;
     CGPoint touchPoint;
-    SKSpriteNode * controlBar;
-    SKSpriteNode * infoBar;
-    SKSpriteNode * backgroundNode;
-    SKLabelNode * questionNode;
-    SKLabelNode * questionNode2;
-    SKLabelNode * questionNode3;
-    SKLabelNode * gameTimeNode;
-    int gameLevel;
+    SKSpriteNode *controlBar;
+    SKSpriteNode *infoBar;
+    SKSpriteNode *backgroundNode;
+    SKLabelNode *questionNode;
+    SKLabelNode *questionNode2;
+    SKLabelNode *questionNode3;
+    SKLabelNode *gameTimeNode;
     
+    int gameLevel;
     int gameTime;
     
     int answar;
     int answars[3];
-    
     int answerCorrectNUm;
-    
     int answarIndex;
     
     bool isGameRun;
-    
     int willChangeGameMode;
-    
     int cloudMoveSpeed;
     
-    NSMutableArray* array;
-    NSMutableArray* clouds;
-    NSMutableArray * spriteNodesProjectile;
+    NSMutableArray *array;
+    NSMutableArray *clouds;
+    NSMutableArray *spriteNodesProjectile;
     
-    SKSpriteNode * rankBtn;
-    SKSpriteNode * musicBtn;
-    SKSpriteNode * modeBtn;
-    NSMutableArray * cloudTexturesArray;
+    SKSpriteNode *rankBtn;
+    SKSpriteNode *musicBtn;
+    SKSpriteNode *modeBtn;
+    NSMutableArray *cloudTexturesArray;
     
-    SKSpriteNode * cloudClearedNode;
-    SKLabelNode * cloudClearedNumNode;
+    SKSpriteNode *cloudClearedNode;
+    SKLabelNode *cloudClearedNumNode;
     
-    NSTimer * theGameTimer;
+    NSTimer *theGameTimer;
     
-    NSMutableArray * musicBtnTextures;
+    NSMutableArray *musicBtnTextures;
     
     int correctAnswarIndex;
 }
@@ -91,41 +86,26 @@ static int playerInitX, playerInitY;
 static int barInitX, barInitY;
 int backgroundLayerZPosition = -2;
 
-static const uint32_t projectileCategory     =  0x1 << 0;
-static const uint32_t monsterCategory        =  0x1 << 1;
-static const uint32_t toolCategory        =  0x1 << 2;
-static const uint32_t catCategory        =  0x1 << 3;
-static const uint32_t hamsterCategory        =  0x1 << 5;
+static const uint32_t projectileCategory = 0x1 << 0;
+static const uint32_t monsterCategory = 0x1 << 1;
+static const uint32_t toolCategory = 0x1 << 2;
+static const uint32_t catCategory = 0x1 << 3;
+static const uint32_t hamsterCategory = 0x1 << 5;
 
 bool isShootEnable = false;
 bool isMoveBar = false;
 bool isMoveAble = true;
 bool isGameEndSuccess = false;
 
--(id)initWithSize:(CGSize)size {    
+- (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
         NSLog(@"Size: %@", NSStringFromCGSize(size));
         [self initGame];
-        
-//        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-//        
-//        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-//        
-//        myLabel.text = @"Hello, World!";
-//        myLabel.fontSize = 30;
-//        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-//                                       CGRectGetMidY(self.frame));
-//        
-//        [self addChild:myLabel];
     }
     return self;
 }
 
-////////////////////////////////////////////////////////////////////////////
-/// init
--(void)initGame{
+- (void)initGame {
     self.physicsWorld.gravity = CGVectorMake(0,0);
     self.physicsWorld.contactDelegate = self;
     
@@ -140,36 +120,26 @@ bool isGameEndSuccess = false;
     [cloudTexturesArray addObject:[SKTexture textureWithImageNamed:@"c1-hd"]];
     [cloudTexturesArray addObject:[SKTexture textureWithImageNamed:@"c2-hd"]];
     [cloudTexturesArray addObject:[SKTexture textureWithImageNamed:@"c3-hd"]];
-    //        _game = nil;
     [TextureHelper initTextures];
     
     musicBtnTextures = [NSMutableArray array];
     [musicBtnTextures addObject:[SKTexture textureWithImageNamed:@"btn_Music-hd"]];
     [musicBtnTextures addObject:[SKTexture textureWithImageNamed:@"btn_Music_Select-hd"]];
     
-//
-//    [MyUtils backgroundMusicPlayerStop];
-    
     clouds = [NSMutableArray array];
     
     spriteNodesProjectile = [[NSMutableArray alloc] init];
     
-    
-    //        self.backgroundColor = [SKColor colorWithRed:1.0 green:0.0 blue:0.0 alpha:1.0];
-    
     controlBar = [SKSpriteNode spriteNodeWithImageNamed:@"control_bar"];
-    //        self.controlBar.size = CGSizeMake(50, 50);
     controlBar.position = CGPointMake(0, 0);
     
     infoBar = [SKSpriteNode spriteNodeWithImageNamed:@"info_bar"];
     infoBar.size = CGSizeMake(self.frame.size.width, 30);
-    infoBar.position = CGPointMake(self.frame.size.width/2, infoBar.size.height/2);
+    infoBar.position = CGPointMake(self.frame.size.width / 2, infoBar.size.height / 2);
     
-//    backgroundNode = [SKSpriteNode spriteNodeWithTexture:[TextureHelper bgTextures][0]];
-
     backgroundNode = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:@"bgMainMenu-hd"]];
     
-    CGSize backgroundSize = CGSizeMake(self.frame.size.width, self.frame.size.height - controlBar.size.height                                                                                                                                                                                                                                                                                                                                                       );
+    CGSize backgroundSize = CGSizeMake(self.frame.size.width, self.frame.size.height - controlBar.size.height);
     
     backgroundNode.size = backgroundSize;
     
@@ -188,16 +158,13 @@ bool isGameEndSuccess = false;
     NSArray * nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"hamster" withinNode:nil sourceRect:CGRectMake(0, 0, 192, 200) andRowNumberOfSprites:2 andColNumberOfSprites:7
                                                               sequence:@[@7]];
     
-    //        self.player = [SKSpriteNode spriteNodeWithImageNamed:@"player"];
     player = [SKSpriteNode spriteNodeWithTexture:nsArray[0]];
     
     player.size = CGSizeMake(60, 60);
     
-    playerInitX = self.size.width/2.0f;
+    playerInitX = self.size.width / 2.0f;
     playerInitY = player.size.height + 40;
     player.position = CGPointMake(playerInitX, playerInitY);
-    
-    
     
     player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
     player.physicsBody.dynamic = YES;
@@ -205,12 +172,12 @@ bool isGameEndSuccess = false;
     player.physicsBody.contactTestBitMask = monsterCategory|toolCategory;
     player.physicsBody.collisionBitMask = 0;
     player.physicsBody.usesPreciseCollisionDetection = YES;
-
+    
     [self addChild:player];
     
     controlPoint = [SKSpriteNode spriteNodeWithImageNamed:@"control_point"];
     controlPoint.size = CGSizeMake(50, 50);
-    //        barInitX = self.controlPoint.size.width/2;
+    
     barInitX = playerInitX;
     barInitY = controlPoint.size.height;
     controlPoint.position = CGPointMake(barInitX, barInitY);
@@ -233,7 +200,7 @@ bool isGameEndSuccess = false;
     modeBtn = [SKSpriteNode spriteNodeWithImageNamed:@"btn_Menu-hd"];
     modeBtn.size = CGSizeMake(42,42);
     modeBtn.anchorPoint = CGPointMake(0, 0);
-    modeBtn.position = CGPointMake(self.frame.size.width - modeBtn.size.width, self.frame.size.height/2 - modeBtn.size.height*2);
+    modeBtn.position = CGPointMake(self.frame.size.width - modeBtn.size.width, self.frame.size.height / 2 - modeBtn.size.height * 2);
     modeBtn.zPosition = backgroundLayerZPosition;
     [self addChild:modeBtn];
     
@@ -243,128 +210,112 @@ bool isGameEndSuccess = false;
     cloudClearedNode.position = CGPointMake(0, 100);
     
     cloudClearedNumNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    
-    //        clearedMonsterLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-    //                                                   CGRectGetMidY(self.frame));
     cloudClearedNumNode.text = @"0";
     cloudClearedNumNode.fontSize = 20;
     cloudClearedNumNode.color = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-    cloudClearedNumNode.position = CGPointMake(cloudClearedNode.position.x + cloudClearedNode.size.width + cloudClearedNumNode.frame.size.width/2, cloudClearedNode.position.y +3 );
+    cloudClearedNumNode.position = CGPointMake(cloudClearedNode.position.x + cloudClearedNode.size.width + cloudClearedNumNode.frame.size.width / 2, cloudClearedNode.position.y + 3 );
     
     [self addChild:cloudClearedNode];
     [self addChild:cloudClearedNumNode];
     
     questionNode = [SKLabelNode labelNodeWithText:@"0000000"];
     questionNode.fontColor = [UIColor redColor];
-    questionNode.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    questionNode.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
     [self addChild:questionNode];
     [self createQuestion];
     
     questionNode2 = [SKLabelNode labelNodeWithText:@"0000000"];
     questionNode2.fontColor = [UIColor redColor];
-    questionNode2.position = CGPointMake(self.frame.size.width/2, questionNode.position.y - questionNode2.frame.size.height);
+    questionNode2.position = CGPointMake(self.frame.size.width / 2, questionNode.position.y - questionNode2.frame.size.height);
     [self addChild:questionNode2];
     [self createQuestion];
     questionNode2.hidden = YES;
     
     questionNode3 = [SKLabelNode labelNodeWithText:@"0000000"];
     questionNode3.fontColor = [UIColor redColor];
-    questionNode3.position = CGPointMake(self.frame.size.width/2, questionNode2.position.y - questionNode3.frame.size.height);
+    questionNode3.position = CGPointMake(self.frame.size.width / 2, questionNode2.position.y - questionNode3.frame.size.height);
     [self addChild:questionNode3];
-
+    
     questionNode3.hidden = YES;
     
     gameTimeNode = [SKLabelNode labelNodeWithText:@"00:00"];
     gameTimeNode.fontName = @"Blod";
     gameTimeNode.fontSize = 25;
-    gameTimeNode.position = CGPointMake(self.frame.size.width-gameTimeNode.frame.size.width/2, self.frame.size.height-gameTimeNode.frame.size.height - 50);
+    gameTimeNode.position = CGPointMake(self.frame.size.width - gameTimeNode.frame.size.width / 2, self.frame.size.height - gameTimeNode.frame.size.height - 50);
     [self addChild:gameTimeNode];
     gameTimeNode.hidden = YES;
     
-    [MyUtils preparePlayBackgroundMusic:@"am_white.mp3"];
+    [MyUtils preparePlayBackgroundMusic:@"am_white"];
     
     id isPlayMusicObject = [[NSUserDefaults standardUserDefaults] objectForKey:@"isPlayMusic"];
     BOOL isPlayMusic = true;
-    if(isPlayMusicObject==nil){
+    if (isPlayMusicObject==nil) {
         isPlayMusicObject = false;
-    }else{
+    } else {
         isPlayMusic = [isPlayMusicObject boolValue];
     }
     
-    if(isPlayMusic){
+    if (isPlayMusic) {
         [MyUtils backgroundMusicPlayerPlay];
         musicBtn.texture = musicBtnTextures[0];
-    }else{
+    } else {
         [MyUtils backgroundMusicPlayerPause];
         musicBtn.texture = musicBtnTextures[1];
     }
 }
 
--(void)didMoveToView:(SKView *)view{
-    //    [self createQuestion];
+- (void)didMoveToView:(SKView *)view {
     [self setModeByGameMode];
 }
-////////////////////////////////////////////////////////////////////////////
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    UITouch * touch = [touches anyObject];
+    UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
-    if(isMoveBar){
+    if (isMoveBar) {
         isMoveBar = false;
         isShootEnable = true;
     }
     
-    
-    if(isGameEndSuccess){
+    if (isGameEndSuccess) {
         [self backToMenu];
     }
 }
 
--(void)backToMenu{ 
+- (void)backToMenu {
     [self removeFromParent];
 }
 
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    //    CGPoint amount = CGPointMake(0.1 * 20,0.1 * 20);
-    //    SKAction* action = [SKAction sha];screenShakeWithNode(worldNode,
-    //                                              amount: amount, oscillations: 10, duration: 3.0) worldNode.runAction(action)
-    
-    
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch * touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     CGRect rect = [controlPoint calculateAccumulatedFrame];
     bool isCollision = CGRectContainsPoint(rect, location);
-    if(isCollision){
+    if (isCollision) {
         touchPoint = location;
         isMoveBar = true;
-//        isShootEnable = true;
     }
     
-    if(pauseBtnNode.hidden==false){
+    if (pauseBtnNode.hidden == false) {
         rect = [pauseBtnNode calculateAccumulatedFrame];
         isCollision = CGRectContainsPoint(rect, location);
-        if(isCollision){
-            [self setGameRun:YES];
-//            [self setViewRun:YES];
+        if (isCollision) {
+            [self setGameRun:YES];;
         }
     }
     
-    if(CGRectContainsPoint(rankBtn.calculateAccumulatedFrame, location)){
-        //        rankBtn.texture = storeBtnClickTextureArray[PRESSED_TEXTURE_INDEX];
-        
+    if (CGRectContainsPoint(rankBtn.calculateAccumulatedFrame, location)) {
         [self.gameDelegate showRankView];
-    }else if(CGRectContainsPoint(modeBtn.calculateAccumulatedFrame, location)){
+    } else if (CGRectContainsPoint(modeBtn.calculateAccumulatedFrame, location)) {
         UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"cancel" destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"InfinityMode", @""),NSLocalizedString(@"BreakthroughMode", @""), NSLocalizedString(@"TimeLimitMode", @""), nil];
         [actionSheet showInView:self.view];
-    }else if(CGRectContainsPoint(musicBtn.calculateAccumulatedFrame, location)){
-        if([MyUtils isBackgroundMusicPlayerPlaying]){
+    } else if(CGRectContainsPoint(musicBtn.calculateAccumulatedFrame, location)) {
+        if ([MyUtils isBackgroundMusicPlayerPlaying]) {
             [MyUtils backgroundMusicPlayerPause];
             musicBtn.texture = musicBtnTextures[1];
             [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"isPlayMusic"];
-        }else{
+        } else {
             [MyUtils backgroundMusicPlayerPlay];
             musicBtn.texture = musicBtnTextures[0];
             [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isPlayMusic"];
@@ -372,9 +323,9 @@ bool isGameEndSuccess = false;
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(isMoveBar && isMoveAble){
-        UITouch * touch = [touches anyObject];
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    if (isMoveBar && isMoveAble) {
+        UITouch *touch = [touches anyObject];
         CGPoint location = [touch locationInNode:self];
         
         CGFloat offx = location.x - touchPoint.x;
@@ -388,33 +339,21 @@ bool isGameEndSuccess = false;
         
         touchPoint = location;
         
-//        self.fire.position = player.position;
-        
-        if(offx > 8){
+        if (offx > 8) {
             player.xScale = -1;
-            
-            player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
+            player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width / 2];
             player.physicsBody.dynamic = YES;
             player.physicsBody.categoryBitMask = hamsterCategory;
             player.physicsBody.contactTestBitMask = monsterCategory|toolCategory;
             player.physicsBody.collisionBitMask = 0;
             player.physicsBody.usesPreciseCollisionDetection = YES;
             
-            TextureHelper *textureHelper = [TextureHelper alloc];
-            
             NSArray * nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"hamster" withinNode:nil sourceRect:CGRectMake(0, 0, 192, 200) andRowNumberOfSprites:2 andColNumberOfSprites:7
-                                 //            sequence:[NSArray arrayWithObjects:@"10",@"11",@"12",@"11",@"10", nil]];
                                                                       sequence:@[@3,@4,@5,@4,@3,@2]];
             
             SKAction * monsterAnimation = [SKAction animateWithTextures:nsArray timePerFrame:0.1];
-            
-            SKAction * actionMoveDone = [SKAction removeFromParent];
-            
-            //        [self.player runAction:[SKAction sequence: @[monsterAnimation, actionMoveDone]]];
-            
             [player runAction:monsterAnimation];
-            
-        }else if(offx <-8){
+        } else if(offx < -8) {
             player.xScale = 1;
             
             player.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:player.size.width/2];
@@ -424,185 +363,171 @@ bool isGameEndSuccess = false;
             player.physicsBody.collisionBitMask = 0;
             player.physicsBody.usesPreciseCollisionDetection = YES;
             
-            TextureHelper *textureHelper = [TextureHelper alloc];
-            
             NSArray * nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"hamster" withinNode:nil sourceRect:CGRectMake(0, 0, 192, 200) andRowNumberOfSprites:2 andColNumberOfSprites:7
-                                 //            sequence:[NSArray arrayWithObjects:@"10",@"11",@"12",@"11",@"10", nil]];
                                                                       sequence:@[@3,@4,@5,@4,@3,@2]];
             
             SKAction * monsterAnimation = [SKAction animateWithTextures:nsArray timePerFrame:0.1];
-            
-            SKAction * actionMoveDone = [SKAction removeFromParent];
-            
-            //        [self.player runAction:[SKAction sequence: @[monsterAnimation, actionMoveDone]]];
-            
             [player runAction:monsterAnimation];
-            
         }
     }
 }
 
--(void)createQuestion{
+- (void)createQuestion {
     int firstNum;
     int secondNum;
-    NSString * questionStr;
+    NSString *questionStr;
     
-    if(self.gameMode == BREAK_GAME_MODE){
+    if (self.gameMode == BREAK_GAME_MODE) {
         correctAnswarIndex = arc4random_uniform(3);
-        for(int i = 0; i < 3; i++){
-        if (answerCorrectNUm >= GAME_LEVEL5_START_LEVEL) {
-            firstNum = arc4random_uniform(100);
-            secondNum = arc4random_uniform(100);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum * secondNum;
-                questionStr = @"%dx%d=?";
-            }else{
-                if(secondNum > firstNum){
-                    int tmp = firstNum;
-                    firstNum = secondNum;
-                    secondNum = tmp;
+        for (int i = 0; i < 3; i++) {
+            if (answerCorrectNUm >= GAME_LEVEL5_START_LEVEL) {
+                firstNum = arc4random_uniform(100);
+                secondNum = arc4random_uniform(100);
+                int r = arc4random_uniform(2);
+                if (r == 0) {
+                    answar = firstNum * secondNum;
+                    questionStr = @"%dx%d=?";
+                } else {
+                    if (secondNum > firstNum) {
+                        int tmp = firstNum;
+                        firstNum = secondNum;
+                        secondNum = tmp;
+                    }
+                    if (secondNum == 0) {
+                        secondNum = 1;
+                    }
+                    answar = firstNum / secondNum;
+                    questionStr = @"%d÷%d=?";
+                    
                 }
-                if (secondNum==0) {
-                    secondNum = 1;
+            } else if (answerCorrectNUm >= GAME_LEVEL4_START_LEVEL) {
+                firstNum = arc4random_uniform(10);
+                secondNum = arc4random_uniform(10);
+                int r = arc4random_uniform(2);
+                if (r == 0) {
+                    answar = firstNum * secondNum;
+                    questionStr = @"%dx%d=?";
+                } else {
+                    if (secondNum > firstNum) {
+                        int tmp = firstNum;
+                        firstNum = secondNum;
+                        secondNum = tmp;
+                    }
+                    if (secondNum == 0) {
+                        secondNum = 1;
+                    }
+                    answar = firstNum / secondNum;
+                    questionStr = @"%d÷%d=?";
+                    
                 }
-                answar = firstNum / secondNum;
-                questionStr = @"%d÷%d=?";
-                
-            }
-        }
-        else if (answerCorrectNUm >= GAME_LEVEL4_START_LEVEL) {
-            firstNum = arc4random_uniform(10);
-            secondNum = arc4random_uniform(10);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum * secondNum;
-                questionStr = @"%dx%d=?";
-            }else{
-                if(secondNum > firstNum){
-                    int tmp = firstNum;
-                    firstNum = secondNum;
-                    secondNum = tmp;
+            } else if (answerCorrectNUm >= GAME_LEVEL3_START_LEVEL) {
+                firstNum = arc4random_uniform(1000);
+                secondNum = arc4random_uniform(1000);
+                int r = arc4random_uniform(2);
+                if (r == 0) {
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                } else {
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
                 }
-                if (secondNum==0) {
-                    secondNum = 1;
+            } else if (answerCorrectNUm >= GAME_LEVEL2_START_LEVEL) {
+                firstNum = arc4random_uniform(100);
+                secondNum = arc4random_uniform(100);
+                int r = arc4random_uniform(2);
+                if (r == 0) {
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                } else {
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
                 }
-                answar = firstNum / secondNum;
-                questionStr = @"%d÷%d=?";
-                
-            }
-        }
-        else if (answerCorrectNUm >= GAME_LEVEL3_START_LEVEL) {
-            firstNum = arc4random_uniform(1000);
-            secondNum = arc4random_uniform(1000);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
+            } else {
+                firstNum = arc4random_uniform(10);
+                secondNum = arc4random_uniform(10);
+                int r = arc4random_uniform(2);
+                if (r == 0) {
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                } else {
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
+                }
             }
             
-        }
-        else if (answerCorrectNUm >= GAME_LEVEL2_START_LEVEL) {
-            firstNum = arc4random_uniform(100);
-            secondNum = arc4random_uniform(100);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
-            }
-        }
-        else{
-            firstNum = arc4random_uniform(10);
-            secondNum = arc4random_uniform(10);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
-            }
-        }
             Boolean isHasTheSameNum = false;
-            for(int j = 0; j < i; j++){
-                if(answar == answars[j]){
+            for (int j = 0; j < i; j++) {
+                if (answar == answars[j]) {
                     isHasTheSameNum = true;
                     break;
                 }
             }
             
-            if(isHasTheSameNum){
+            if (isHasTheSameNum) {
                 i--;
                 continue;
             }
-        answars[i] = answar;
-        
-        if(i==correctAnswarIndex)
-        questionNode.text = [NSString stringWithFormat:questionStr, firstNum, secondNum];
+            
+            answars[i] = answar;
+            
+            if (i == correctAnswarIndex)
+                questionNode.text = [NSString stringWithFormat:questionStr, firstNum, secondNum];
         }
-    }else if(self.gameMode == TIME_LIMIT_MODE){
+    } else if (self.gameMode == TIME_LIMIT_MODE) {
         NSString * tmpStr = @"";
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL5_START_LEVEL) {
                 firstNum = arc4random_uniform(100);
                 secondNum = arc4random_uniform(100);
                 int r = arc4random_uniform(2);
-                if(r==0){
+                if (r == 0) {
                     answar = firstNum * secondNum;
                     questionStr = @"%dx%d=?";
-                }else{
-                    if(secondNum > firstNum){
+                } else {
+                    if (secondNum > firstNum) {
                         int tmp = firstNum;
                         firstNum = secondNum;
                         secondNum = tmp;
                     }
-                    if (secondNum==0) {
+                    if (secondNum == 0) {
                         secondNum = 1;
                     }
                     answar = firstNum / secondNum;
                     questionStr = @"%d÷%d=?";
                     
                 }
-            }
-            else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL4_START_LEVEL) {
+            } else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL4_START_LEVEL) {
                 firstNum = arc4random_uniform(10);
                 secondNum = arc4random_uniform(10);
                 int r = arc4random_uniform(2);
-                if(r==0){
+                if (r == 0) {
                     answar = firstNum * secondNum;
                     questionStr = @"%dx%d=?";
-                }else{
-                    if(secondNum > firstNum){
+                } else {
+                    if (secondNum > firstNum) {
                         int tmp = firstNum;
                         firstNum = secondNum;
                         secondNum = tmp;
                     }
-                    if (secondNum==0) {
+                    
+                    if (secondNum == 0) {
                         secondNum = 1;
                     }
+                    
                     answar = firstNum / secondNum;
                     questionStr = @"%d÷%d=?";
-                    
                 }
-            }
-            else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL3_START_LEVEL) {
+            } else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL3_START_LEVEL) {
                 firstNum = arc4random_uniform(1000);
                 secondNum = arc4random_uniform(1000);
                 int r = arc4random_uniform(2);
-                if(r==0){
+                if (r == 0) {
                     answar = firstNum + secondNum;
                     questionStr = @"%d+%d=?";
-                }else{
+                } else {
                     answar = firstNum - secondNum;
                     questionStr = @"%d-%d=?";
                 }
-                
             }
             else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL2_START_LEVEL) {
                 firstNum = arc4random_uniform(100);
@@ -629,8 +554,8 @@ bool isGameEndSuccess = false;
                 }
             }
             answars[i] = answar;
-//            tmpStr = [tmpStr stringByAppendingString:@"\n"];
-//            tmpStr = [tmpStr stringByAppendingString:questionStr];
+            //            tmpStr = [tmpStr stringByAppendingString:@"\n"];
+            //            tmpStr = [tmpStr stringByAppendingString:questionStr];
             if(i==0){
                 questionNode.text = [NSString stringWithFormat:questionStr, firstNum, secondNum];
             }else if(i==1){
@@ -639,139 +564,123 @@ bool isGameEndSuccess = false;
                 questionNode3.text = [NSString stringWithFormat:questionStr, firstNum, secondNum];
             }
         }
-//        questionStr = tmpStr;
-    }else{
-//        if (answerCorrectNUm >= GAME_LEVEL5_START_LEVEL) {
-        
+    } else {
         correctAnswarIndex = arc4random_uniform(3);
         for(int i = 0; i < 3; i++){
             
-        int questionType = arc4random_uniform(5);
-        if(questionType==0){
-            firstNum = arc4random_uniform(100);
-            secondNum = arc4random_uniform(100);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum * secondNum;
-                questionStr = @"%dx%d=?";
-            }else{
-                if(secondNum > firstNum){
-                    int tmp = firstNum;
-                    firstNum = secondNum;
-                    secondNum = tmp;
+            int questionType = arc4random_uniform(5);
+            if(questionType==0){
+                firstNum = arc4random_uniform(100);
+                secondNum = arc4random_uniform(100);
+                int r = arc4random_uniform(2);
+                if(r==0){
+                    answar = firstNum * secondNum;
+                    questionStr = @"%dx%d=?";
+                }else{
+                    if(secondNum > firstNum){
+                        int tmp = firstNum;
+                        firstNum = secondNum;
+                        secondNum = tmp;
+                    }
+                    if (secondNum==0) {
+                        secondNum = 1;
+                    }
+                    answar = firstNum / secondNum;
+                    questionStr = @"%d÷%d=?";
+                    
                 }
-                if (secondNum==0) {
-                    secondNum = 1;
+            }
+            else if (questionType==1) {
+                firstNum = arc4random_uniform(10);
+                secondNum = arc4random_uniform(10);
+                int r = arc4random_uniform(2);
+                if(r==0){
+                    answar = firstNum * secondNum;
+                    questionStr = @"%dx%d=?";
+                }else{
+                    if(secondNum > firstNum){
+                        int tmp = firstNum;
+                        firstNum = secondNum;
+                        secondNum = tmp;
+                    }
+                    if (secondNum==0) {
+                        secondNum = 1;
+                    }
+                    answar = firstNum / secondNum;
+                    questionStr = @"%d÷%d=?";
+                    
                 }
-                answar = firstNum / secondNum;
-                questionStr = @"%d÷%d=?";
+            }
+            else if (questionType==2) {
+                firstNum = arc4random_uniform(1000);
+                secondNum = arc4random_uniform(1000);
+                int r = arc4random_uniform(2);
+                if(r==0){
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                }else{
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
+                }
                 
             }
-        }
-        else if (questionType==1) {
-            firstNum = arc4random_uniform(10);
-            secondNum = arc4random_uniform(10);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum * secondNum;
-                questionStr = @"%dx%d=?";
-            }else{
-                if(secondNum > firstNum){
-                    int tmp = firstNum;
-                    firstNum = secondNum;
-                    secondNum = tmp;
+            else if (questionType==3) {
+                firstNum = arc4random_uniform(100);
+                secondNum = arc4random_uniform(100);
+                int r = arc4random_uniform(2);
+                if(r==0){
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                }else{
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
                 }
-                if (secondNum==0) {
-                    secondNum = 1;
+            }
+            else{
+                firstNum = arc4random_uniform(10);
+                secondNum = arc4random_uniform(10);
+                int r = arc4random_uniform(2);
+                if(r==0){
+                    answar = firstNum + secondNum;
+                    questionStr = @"%d+%d=?";
+                }else{
+                    answar = firstNum - secondNum;
+                    questionStr = @"%d-%d=?";
                 }
-                answar = firstNum / secondNum;
-                questionStr = @"%d÷%d=?";
-                
             }
-        }
-        else if (questionType==2) {
-            firstNum = arc4random_uniform(1000);
-            secondNum = arc4random_uniform(1000);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
-            }
-            
-        }
-        else if (questionType==3) {
-            firstNum = arc4random_uniform(100);
-            secondNum = arc4random_uniform(100);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
-            }
-        }
-        else{
-            firstNum = arc4random_uniform(10);
-            secondNum = arc4random_uniform(10);
-            int r = arc4random_uniform(2);
-            if(r==0){
-                answar = firstNum + secondNum;
-                questionStr = @"%d+%d=?";
-            }else{
-                answar = firstNum - secondNum;
-                questionStr = @"%d-%d=?";
-            }
-        }
             
             Boolean isHasTheSameNum = false;
-            for(int j = 0; j < i; j++){
-                if(answar == answars[j]){
+            for (int j = 0; j < i; j++) {
+                if (answar == answars[j]) {
                     isHasTheSameNum = true;
                     break;
                 }
             }
             
-            if(isHasTheSameNum){
+            if (isHasTheSameNum) {
                 i--;
                 continue;
             }
             answars[i] = answar;
             
-            if(i==correctAnswarIndex)
+            if (i == correctAnswarIndex)
                 questionNode.text = [NSString stringWithFormat:questionStr, firstNum, secondNum];
         }
     }
-//    
-//    int answarIndex = arc4random_uniform(10);
-//    
-//    array = [NSMutableArray array];
-//    
-//    for(int i = 0; i < 10; i++){
-//        if(i==answarIndex)
-//            array[i] = [NSNumber numberWithInt:answar];
-//        else
-//            array[i] = [NSNumber numberWithInt:arc4random_uniform(100)];
-//    }
 }
 
--(void)checkAndCreateAnswer{
+- (void)checkAndCreateAnswer {
     if(answarIndex<array.count)
         return;
+    
     answarIndex = 0;
     int correctAnswarIndex = arc4random_uniform(3);
     
     array = [NSMutableArray array];
     
-    if(self.gameMode == BREAK_GAME_MODE || self.gameMode == INFINITY_MODE){
-        for(int i = 0; i < 3; i++){
-//            if(i==correctAnswarIndex)
-                array[i] = [NSNumber numberWithInt:answars[i]];
-//            else
-//                array[i] = [NSNumber numberWithInt:arc4random_uniform(10)];
+    if (self.gameMode == BREAK_GAME_MODE || self.gameMode == INFINITY_MODE) {
+        for (int i = 0; i < 3; i++) {
+            array[i] = [NSNumber numberWithInt:answars[i]];
         }
     }else if(self.gameMode == TIME_LIMIT_MODE){
         
@@ -796,39 +705,34 @@ bool isGameEndSuccess = false;
     return uniqueNumbers;
 }
 
--(int)getAnswer{
-    
+- (int)getAnswer {
     int answer = [array[answarIndex] intValue];
     answarIndex++;
     return answer;
 }
 
--(void)checkAndCreateCloud{
-    if(self.gameMode == BREAK_GAME_MODE || self.gameMode == INFINITY_MODE ){
-    for(int i = 0; i < 1; i++){
-//        Cloud * cloud = [Cloud spriteNodeWithImageNamed:@"s0"];
-        int cloudStyleIndex = arc4random_uniform(cloudTexturesArray.count);
-        Cloud * cloud = [Cloud spriteNodeWithTexture:cloudTexturesArray[cloudStyleIndex]];
-        cloud.size = CGSizeMake(120, 80);
-        cloud.position = CGPointMake(0 - cloud.size.width/2.0f, arc4random_uniform(self.frame.size.height - cloudClearedNode.position.y*3 - cloud.size.height/2) + cloudClearedNode.position.y*2);
-//        cloud.num = [array[arc4random_uniform(array.count)] intValue];
-        cloud.num = [self getAnswer];
-        cloud.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:cloud.size.width/2.5f];
-        cloud.physicsBody.dynamic = YES;
-        cloud.physicsBody.categoryBitMask = monsterCategory;
-        cloud.physicsBody.contactTestBitMask = projectileCategory;
-        cloud.physicsBody.collisionBitMask = 0;
-        cloud.physicsBody.usesPreciseCollisionDetection = YES;
-        [self addChild:cloud];
-        [clouds addObject:cloud];
-    }
-    }else if(self.gameMode == TIME_LIMIT_MODE){
-        //        Cloud * cloud = [Cloud spriteNodeWithImageNamed:@"s0"];
+- (void)checkAndCreateCloud {
+    if (self.gameMode == BREAK_GAME_MODE || self.gameMode == INFINITY_MODE) {
+        for (int i = 0; i < 1; i++) {
+            int cloudStyleIndex = arc4random_uniform(cloudTexturesArray.count);
+            Cloud * cloud = [Cloud spriteNodeWithTexture:cloudTexturesArray[cloudStyleIndex]];
+            cloud.size = CGSizeMake(120, 80);
+            cloud.position = CGPointMake(0 - cloud.size.width / 2.0f, arc4random_uniform(self.frame.size.height - cloudClearedNode.position.y*3 - cloud.size.height / 2) + cloudClearedNode.position.y * 2);
+            cloud.num = [self getAnswer];
+            cloud.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:cloud.size.width / 2.5f];
+            cloud.physicsBody.dynamic = YES;
+            cloud.physicsBody.categoryBitMask = monsterCategory;
+            cloud.physicsBody.contactTestBitMask = projectileCategory;
+            cloud.physicsBody.collisionBitMask = 0;
+            cloud.physicsBody.usesPreciseCollisionDetection = YES;
+            [self addChild:cloud];
+            [clouds addObject:cloud];
+        }
+    } else if(self.gameMode == TIME_LIMIT_MODE) {
         int cloudStyleIndex = arc4random_uniform(cloudTexturesArray.count);
         Cloud * cloud = [Cloud spriteNodeWithTexture:cloudTexturesArray[cloudStyleIndex]];
         cloud.size = CGSizeMake(120, 80);
         cloud.position = CGPointMake(0, arc4random_uniform(self.frame.size.height - cloudClearedNode.position.y*2 - cloud.size.height/2) + cloudClearedNode.position.y*2);
-        //        cloud.num = [array[arc4random_uniform(array.count)] intValue];
         cloud.num = [self getAnswer];
         cloud.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:cloud.size.width/2.5f];
         cloud.physicsBody.dynamic = YES;
@@ -841,14 +745,14 @@ bool isGameEndSuccess = false;
     }
 }
 
--(void)checkAndMoveClouds{
+- (void)checkAndMoveClouds {
     for(int i = 0; i < clouds.count; i++){
         Cloud * cloud = clouds[i];
         cloud.position = CGPointMake(cloud.position.x + cloudMoveSpeed, cloud.position.y);
     }
 }
 
--(void)checkAndRemoveCloud{
+- (void)checkAndRemoveCloud {
     for(int i = 0; i < clouds.count; i++){
         Cloud * cloud = clouds[i];
         if(cloud.position.x - cloud.size.width/2.0f > self.frame.size.width){
@@ -858,50 +762,46 @@ bool isGameEndSuccess = false;
     }
 }
 
--(void)shoot{
-//    [self runAction:[SKAction playSoundFileNamed:@"pew-pew-lei.caf" waitForCompletion:NO]];
+- (void)shoot {
+    NSArray * nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"bullets" withinNode:nil sourceRect:CGRectMake(0, 0, 200, 232) andRowNumberOfSprites:1 andColNumberOfSprites:3];
     
-        NSArray * nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"bullets" withinNode:nil sourceRect:CGRectMake(0, 0, 200, 232) andRowNumberOfSprites:1 andColNumberOfSprites:3];
-        
-        Bullet * projectile = [Bullet spriteNodeWithTexture:nil size:CGSizeMake(50, 50)];
-        
-        projectile.position = player.position;
-        
-        SKAction * monsterAnimation = [SKAction repeatActionForever:[SKAction animateWithTextures:nsArray timePerFrame:0.08]];
-        
-        [projectile runAction:[SKAction repeatActionForever: monsterAnimation ]];
-        
-        projectile.zPosition = projectileLayerZPosition;
-        [self insertChild:projectile atIndex:1];
-        //        [self addChild:projectile];
-        [spriteNodesProjectile addObject:projectile];
-        
-        CGPoint p = CGPointMake(0, 1000);
-        
-        // 8 - 把子弹的位移加到它现在的位置上
-        CGPoint realDest = rwAdd(p, projectile.position);
-        
-        // 9 - 创建子弹发射的动作
-        float velocity = 480.0/5.0;
-        float realMoveDuration = self.size.width / velocity;
-        SKAction * actionMove = [SKAction moveTo:realDest duration:realMoveDuration];
-        SKAction * actionMoveDone = [SKAction removeFromParent];
-        [projectile runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
-        
-        
-        projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
-        projectile.physicsBody.dynamic = YES;
-        projectile.physicsBody.categoryBitMask = projectileCategory;
-        projectile.physicsBody.contactTestBitMask = monsterCategory;
-        projectile.physicsBody.collisionBitMask = 0;
-        projectile.physicsBody.usesPreciseCollisionDetection = YES;
+    Bullet * projectile = [Bullet spriteNodeWithTexture:nil size:CGSizeMake(50, 50)];
+    
+    projectile.position = player.position;
+    
+    SKAction * monsterAnimation = [SKAction repeatActionForever:[SKAction animateWithTextures:nsArray timePerFrame:0.08]];
+    
+    [projectile runAction:[SKAction repeatActionForever: monsterAnimation ]];
+    
+    projectile.zPosition = projectileLayerZPosition;
+    [self insertChild:projectile atIndex:1];
+    //        [self addChild:projectile];
+    [spriteNodesProjectile addObject:projectile];
+    
+    CGPoint p = CGPointMake(0, 1000);
+    
+    CGPoint realDest = rwAdd(p, projectile.position);
+    
+    float velocity = 480.0/5.0;
+    float realMoveDuration = self.size.width / velocity;
+    SKAction * actionMove = [SKAction moveTo:realDest duration:realMoveDuration];
+    SKAction * actionMoveDone = [SKAction removeFromParent];
+    [projectile runAction:[SKAction sequence:@[actionMove, actionMoveDone]]];
+    
+    
+    projectile.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:projectile.size.width/2];
+    projectile.physicsBody.dynamic = YES;
+    projectile.physicsBody.categoryBitMask = projectileCategory;
+    projectile.physicsBody.contactTestBitMask = monsterCategory;
+    projectile.physicsBody.collisionBitMask = 0;
+    projectile.physicsBody.usesPreciseCollisionDetection = YES;
     
     
     TextureHelper *textureHelper = [TextureHelper alloc];
     
     nsArray = [TextureHelper getTexturesWithSpriteSheetNamed:@"hamster" withinNode:nil sourceRect:CGRectMake(0, 0, 192, 200) andRowNumberOfSprites:2 andColNumberOfSprites:7
-                         //            sequence:[NSArray arrayWithObjects:@"10",@"11",@"12",@"11",@"10", nil]];
-                                                              sequence:@[@7,@8,@0,@1,@2]];
+               //            sequence:[NSArray arrayWithObjects:@"10",@"11",@"12",@"11",@"10", nil]];
+                                                    sequence:@[@7,@8,@0,@1,@2]];
     
     monsterAnimation = [SKAction animateWithTextures:nsArray timePerFrame:0.1];
     
@@ -1022,8 +922,8 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
             answerCorrectNUm++;
             [self setCloudClearNumNodeText];
             //win
-    //        [self setPaused:true];
-    //        isGameRun = false;
+            //        [self setPaused:true];
+            //        isGameRun = false;
             [self resetQusetion];
         }else{
             [theGameTimer invalidate];
@@ -1223,7 +1123,7 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
             [theGameTimer invalidate];
             [self setGameRun:false];
             [self reportBreakGameModeScore];
-//            [self.gameDelegate showGameOver];
+            //            [self.gameDelegate showGameOver];
             [self.gameDelegate showGameWin];
             gameTime = 0;
         }
@@ -1242,7 +1142,7 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
         }
     }
 }
-    
+
 -(void)setGameTimeNodeText:(int)time{
     gameTimeNode.text = [CommonUtil timeFormatted:time];
     gameTimeNode.position = CGPointMake(self.frame.size.width-gameTimeNode.frame.size.width/2, self.frame.size.height-gameTimeNode.frame.size.height - 50);
@@ -1265,7 +1165,7 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
 
 
 -(void)beHited{
-//    [self setViewRun:false];
+    //    [self setViewRun:false];
     isGameRun = false;
     GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
     [gameCenterUtil reportScore:gameTime forCategory:@"QuteDodgeLeaderBoard"];
@@ -1292,28 +1192,25 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
     }
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==0) {
-//        [self changeToInfiniteMode];
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
         willChangeGameMode = INFINITY_MODE;
-    }else if(buttonIndex==1){
-//        [self changeToBreakGameMode];
+    } else if(buttonIndex == 1) {
         willChangeGameMode = BREAK_GAME_MODE;
-    }else if(buttonIndex==2){
-//        [self changeToTimeLimitMode];
+    } else if(buttonIndex==2) {
         willChangeGameMode = TIME_LIMIT_MODE;
     }
 }
 
--(int) getAnswerCorrectNUm{
+- (int)getAnswerCorrectNUm {
     return answerCorrectNUm;
 }
 
--(int)getGameTime{
+- (int)getGameTime {
     return gameTime;
 }
 
--(void)setWillChangeGameMode:(int)_willChangeGameMode{
+- (void)setWillChangeGameMode:(int)_willChangeGameMode {
     willChangeGameMode = _willChangeGameMode;
 }
 

@@ -10,16 +10,7 @@
 
 @implementation CommonUtil
 
-//+ (id)sharedInstance {
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        instance = [self new];
-//    });
-//    return instance;
-//}
-
-+ (NSString *)timeFormatted:(int)totalSeconds
-{
++ (NSString *)timeFormatted:(int)totalSeconds {
     int seconds = totalSeconds % 60;
     int minutes = (totalSeconds / 60) % 60;
     int hours = totalSeconds / 3600;
