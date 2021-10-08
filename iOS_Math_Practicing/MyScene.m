@@ -41,6 +41,7 @@ int maxTime = 60;
 @implementation MyScene{
     SKSpriteNode *player;
     SKSpriteNode *controlPoint;
+    SKSpriteNode *gestureHintPoint;
     SKSpriteNode *pauseBtnNode;
     CGPoint touchPoint;
     SKSpriteNode *controlBar;
@@ -80,6 +81,7 @@ int maxTime = 60;
     NSMutableArray *musicBtnTextures;
     
     int correctAnswarIndex;
+    int hintAppearingTimerCounter;
 }
 
 static int playerInitX, playerInitY;
@@ -103,6 +105,16 @@ bool isGameEndSuccess = false;
         [self initGame];
     }
     return self;
+}
+
+- (void)showHint {
+    gestureHintPoint.position = CGPointMake(controlPoint.position.x, controlPoint.position.y + controlPoint.size.width / 2);
+    gestureHintPoint.hidden = false;
+    SKAction *actionRight = [SKAction moveToX:gestureHintPoint.position.x + 30 duration:0.6];
+    SKAction *actionLeft = [SKAction moveToX:gestureHintPoint.position.x - 30 duration:1.2];
+    SKAction *actionRightAgain = [SKAction moveToX:gestureHintPoint.position.x duration:0.6];
+    SKAction *actionMoveDone = [SKAction hide];
+    [gestureHintPoint runAction:[SKAction sequence:@[actionRight, actionLeft, actionRightAgain, actionMoveDone]]];
 }
 
 - (void)initGame {
@@ -182,6 +194,23 @@ bool isGameEndSuccess = false;
     barInitY = controlPoint.size.height;
     controlPoint.position = CGPointMake(barInitX, barInitY);
     [self addChild:controlPoint];
+    
+    gestureHintPoint = [SKSpriteNode spriteNodeWithImageNamed:@"row-2-column-2"];
+    CGSize size = gestureHintPoint.calculateAccumulatedFrame.size;
+    CGFloat aspectRatio = size.width / size.height;
+    CGFloat gestureHintWidth = controlPoint.size.width * 1.5;
+    gestureHintPoint.size = CGSizeMake(gestureHintWidth, gestureHintWidth / aspectRatio);
+    gestureHintPoint.anchorPoint = CGPointMake(0.5, 1);
+    gestureHintPoint.hidden = true;
+    [self addChild:gestureHintPoint];
+    
+    id isFirstLaunch = [[NSUserDefaults standardUserDefaults] objectForKey:@"isFirstLaunch"];
+    if (isFirstLaunch == nil || [isFirstLaunch boolValue]) {
+        [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"isFirstLaunch"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self showHint];
+        });
+    }
     
     rankBtn = [SKSpriteNode spriteNodeWithImageNamed:@"leader_board_btn"];
     rankBtn.size = CGSizeMake(42,42);
@@ -295,6 +324,7 @@ bool isGameEndSuccess = false;
     if (isCollision) {
         touchPoint = location;
         isMoveBar = true;
+        hintAppearingTimerCounter = 0;
     }
     
     if (pauseBtnNode.hidden == false) {
@@ -836,33 +866,24 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
     [self resetQusetion];
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact
-{
+- (void)didBeginContact:(SKPhysicsContact *)contact {
     [self handleContact:contact];
 }
 
--(void) handleContact:(SKPhysicsContact *)contact
-{
+- (void)handleContact:(SKPhysicsContact *)contact {
     NSLog(@"contact");
-    // What you are doing in your current didBeginContact method
-    // 1
+    
     SKPhysicsBody *firstBody, *secondBody;
     
-    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask)
-    {
+    if (contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask) {
         firstBody = contact.bodyA;
         secondBody = contact.bodyB;
-    }
-    else
-    {
+    } else {
         firstBody = contact.bodyB;
         secondBody = contact.bodyA;
     }
     
-    // 2
-    if ((firstBody.categoryBitMask == projectileCategory)  &&
-        (secondBody.categoryBitMask == monsterCategory))
-    {
+    if ((firstBody.categoryBitMask == projectileCategory) && (secondBody.categoryBitMask == monsterCategory)) {
         NSLog(@"will do didCollideWithMonster");
         [self projectile:(SKSpriteNode *) firstBody.node didCollideWithMonster:(SKSpriteNode *) secondBody.node];
         
@@ -871,16 +892,13 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
 
 - (void)projectile:(Bullet *)projectile didCollideWithMonster:(Cloud *)cloud {
     
-    if (projectile.hidden||cloud.hidden||projectile==nil||cloud==nil) {
+    if (projectile.hidden || cloud.hidden || projectile == nil || cloud == nil) {
         return;
     }
     
     NSLog(@"Hit");
     
     projectile.hidden = true;
-    
-    //    projectile.physicsBody = nil;
-    
     [projectile removeFromParent];
     
     [cloud removeFromParent];
@@ -992,6 +1010,14 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
         [self checkAndRemoveCloud];
         [self checkAndCreateAnswer];
         [self checkAndCreateCloud];
+        
+        if (!isMoveBar) {
+            hintAppearingTimerCounter++;
+            if (hintAppearingTimerCounter > 3) {
+                hintAppearingTimerCounter = 0;
+                [self showHint];
+            }
+        }
     }
 }
 
@@ -1119,52 +1145,48 @@ static inline CGPoint rwAdd(CGPoint a, CGPoint b) {
         }
         [self setGameTimeNodeText:gameTime];
         
-        if(answerCorrectNUm >= GAME_SUCCESS_LEVEL){
+        if (answerCorrectNUm >= GAME_SUCCESS_LEVEL) {
             [theGameTimer invalidate];
             [self setGameRun:false];
             [self reportBreakGameModeScore];
-            //            [self.gameDelegate showGameOver];
             [self.gameDelegate showGameWin];
             gameTime = 0;
         }
-    }else if(self.gameMode == TIME_LIMIT_MODE){
+    } else if(self.gameMode == TIME_LIMIT_MODE) {
         [self setGameTimeNodeText: maxTime - gameTime];
         
-        if(maxTime - gameTime==0){
+        if (maxTime - gameTime==0) {
             [theGameTimer invalidate];
             gameTime = 0;
             [self setGameRun:false];
             [self reportTimeLimitModeScore];
-            //        [self setPaused:true];
             [self.gameDelegate showGameOver];
-            
-            
         }
     }
 }
 
--(void)setGameTimeNodeText:(int)time{
+- (void)setGameTimeNodeText:(int)time {
     gameTimeNode.text = [CommonUtil timeFormatted:time];
     gameTimeNode.position = CGPointMake(self.frame.size.width-gameTimeNode.frame.size.width/2, self.frame.size.height-gameTimeNode.frame.size.height - 50);
 }
 
--(void)reportInfinityModeScore{
+- (void)reportInfinityModeScore {
     GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
     [gameCenterUtil reportScore:answerCorrectNUm forCategory:@"ShootLearningInfinityLeaderBoard"];
 }
 
--(void)reportBreakGameModeScore{
+- (void)reportBreakGameModeScore {
     GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
     [gameCenterUtil reportScore:gameTime forCategory:@"ShootLearningBreakGameLeaderBoard"];
 }
 
--(void)reportTimeLimitModeScore{
+- (void)reportTimeLimitModeScore {
     GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];
     [gameCenterUtil reportScore:answerCorrectNUm forCategory:@"ShootLearningTimeLimitLeaderBoard"];
 }
 
 
--(void)beHited{
+- (void)beHited {
     //    [self setViewRun:false];
     isGameRun = false;
     GameCenterUtil * gameCenterUtil = [GameCenterUtil sharedInstance];

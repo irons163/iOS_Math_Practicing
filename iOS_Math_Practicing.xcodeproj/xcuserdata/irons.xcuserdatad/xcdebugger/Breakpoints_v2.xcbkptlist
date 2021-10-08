@@ -394,18 +394,30 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
-            uuid = "C0364EE9-C04E-47EA-8A4F-940F48234577"
+            uuid = "B2AC33C8-9A97-43AD-B6CD-7F5CFA193530"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iOS_Math_Practicing/MyUtils.m"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BCF72C1B-3FD5-4250-8CB8-52A8AB9B0C81"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iOS_Math_Practicing/MyScene.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "+preparePlayBackgroundMusic:"
+            startingLineNumber = "1115"
+            endingLineNumber = "1115"
+            landmarkName = "-initGameTimer"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

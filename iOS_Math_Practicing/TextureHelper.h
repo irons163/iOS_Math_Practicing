@@ -18,8 +18,7 @@
 + (NSArray *)cat5Textures;
 
 + (SKTexture *)hamsterInjureTexture;
-
-+ (NSArray *)bgTextures;
++ (SKTexture *)gestureHintTexture;
 
 + (NSArray *)timeTextures;
 

@@ -8,12 +8,11 @@
 
 #import "TextureHelper.h"
 
-static NSArray * cat1Textures,  * cat2Textures, * cat3Textures, * cat4Textures, * cat5Textures;
-static SKTexture * hamster_injure;
-static SKTexture * bg01, *bg02, *bg03, *bg04, *bg05, *bg06, *bg07, *bg08, *bg09, *bg10, *bg11,*bg12,*bg13,*bg14,*bg15;
-static NSArray * bgs;
-static SKTexture * time01, *time02, *time03, *time04, *time05, *time06, *time07, *time08, *time09, *time00, *timeQ;
-static NSArray * timeScores, * timeScoresImages;
+static NSArray *cat1Textures, *cat2Textures, *cat3Textures, *cat4Textures, *cat5Textures;
+static SKTexture *hamster_injure, *gesture_hint;
+static SKTexture *bg01, *bg02, *bg03, *bg04, *bg05, *bg06, *bg07, *bg08, *bg09, *bg10, *bg11, *bg12, *bg13, *bg14, *bg15;
+static SKTexture *time01, *time02, *time03, *time04, *time05, *time06, *time07, *time08, *time09, *time00, *timeQ;
+static NSArray *timeScores, *timeScoresImages;
 
 @implementation TextureHelper
 
@@ -43,12 +42,12 @@ SKTexture *temp;
     return cat5Textures;
 }
 
-+ (NSArray *)bgTextures {
-    return bgs;
-}
-
 + (SKTexture *)hamsterInjureTexture {
     return hamster_injure;
+}
+
++ (SKTexture *)gestureHintTexture {
+    return gesture_hint;
 }
 
 + (NSArray *)timeTextures {
@@ -130,6 +129,7 @@ SKTexture *temp;
 
 + (void)initTextures {
     hamster_injure = [SKTexture textureWithImageNamed:@"hamster_injure"];
+    gesture_hint = [SKTexture textureWithImageNamed:@"row-2-column-2"];
     
     time01 = [SKTexture textureWithImageNamed:@"s1"];
     time02 = [SKTexture textureWithImageNamed:@"s2"];
@@ -157,24 +157,6 @@ SKTexture *temp;
     UIImage *image00 = [UIImage imageNamed:@"s0"];
     UIImage *imageQ = [UIImage imageNamed:@"dot"];
     timeScoresImages = @[image00, image01, image02, image03, image04, image05, image06, image07, image08, image09, imageQ];
-    
-    bg01 = [SKTexture textureWithImageNamed:@"bg01.jpg"];
-    bg02 = [SKTexture textureWithImageNamed:@"bg02.jpg"];
-    bg03 = [SKTexture textureWithImageNamed:@"bg03.jpg"];
-    bg04 = [SKTexture textureWithImageNamed:@"bg04.jpg"];
-    bg05 = [SKTexture textureWithImageNamed:@"bg05.jpg"];
-    bg06 = [SKTexture textureWithImageNamed:@"bg06.jpg"];
-    bg07 = [SKTexture textureWithImageNamed:@"bg07.jpg"];
-    bg08 = [SKTexture textureWithImageNamed:@"bg08.jpg"];
-    bg09 = [SKTexture textureWithImageNamed:@"bg09.jpg"];
-    bg10 = [SKTexture textureWithImageNamed:@"bg10.jpg"];
-    bg11 = [SKTexture textureWithImageNamed:@"bg11.jpg"];
-    bg12 = [SKTexture textureWithImageNamed:@"bg12.jpg"];
-    bg13 = [SKTexture textureWithImageNamed:@"bg13.jpg"];
-    bg14 = [SKTexture textureWithImageNamed:@"bg14.jpg"];
-    bg15 = [SKTexture textureWithImageNamed:@"bg15.jpg"];
-    
-    bgs = @[bg01, bg02, bg03 ,bg04, bg05, bg06,bg07, bg08, bg09, bg10, bg11, bg12, bg13, bg14, bg15];
 }
 
 @end
