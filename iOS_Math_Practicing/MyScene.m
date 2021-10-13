@@ -233,7 +233,7 @@ bool isGameEndSuccess = false;
     
     cloudClearedNumNode = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
     cloudClearedNumNode.text = @"0";
-    cloudClearedNumNode.fontSize = 20;
+    cloudClearedNumNode.fontSize = 32;
     cloudClearedNumNode.color = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
     cloudClearedNumNode.position = CGPointMake(cloudClearedNode.position.x + cloudClearedNode.size.width + cloudClearedNumNode.frame.size.width / 2, cloudClearedNode.position.y + 3 );
     
@@ -241,28 +241,36 @@ bool isGameEndSuccess = false;
     [self addChild:cloudClearedNumNode];
     
     questionNode = [SKLabelNode labelNodeWithText:@"0000000"];
+    questionNode.fontName = @"Blod";
+    questionNode.fontSize = 64;
     questionNode.fontColor = [UIColor redColor];
     questionNode.position = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
     [self addChild:questionNode];
     [self createQuestion];
     
+    NSInteger questionNodePadding = 24;
+    
     questionNode2 = [SKLabelNode labelNodeWithText:@"0000000"];
+    questionNode2.fontName = @"Blod";
+    questionNode2.fontSize = 64;
     questionNode2.fontColor = [UIColor redColor];
-    questionNode2.position = CGPointMake(self.frame.size.width / 2, questionNode.position.y - questionNode2.frame.size.height);
+    questionNode2.position = CGPointMake(self.frame.size.width / 2, questionNode.position.y - questionNode2.frame.size.height - questionNodePadding);
     [self addChild:questionNode2];
     [self createQuestion];
     questionNode2.hidden = YES;
     
     questionNode3 = [SKLabelNode labelNodeWithText:@"0000000"];
+    questionNode3.fontName = @"Blod";
+    questionNode3.fontSize = 64;
     questionNode3.fontColor = [UIColor redColor];
-    questionNode3.position = CGPointMake(self.frame.size.width / 2, questionNode2.position.y - questionNode3.frame.size.height);
+    questionNode3.position = CGPointMake(self.frame.size.width / 2, questionNode2.position.y - questionNode3.frame.size.height - questionNodePadding);
     [self addChild:questionNode3];
     
     questionNode3.hidden = YES;
     
     gameTimeNode = [SKLabelNode labelNodeWithText:@"00:00"];
     gameTimeNode.fontName = @"Blod";
-    gameTimeNode.fontSize = 25;
+    gameTimeNode.fontSize = 42;
     gameTimeNode.position = CGPointMake(self.frame.size.width - gameTimeNode.frame.size.width / 2, self.frame.size.height - gameTimeNode.frame.size.height - 50);
     [self addChild:gameTimeNode];
     gameTimeNode.hidden = YES;
@@ -405,12 +413,26 @@ bool isGameEndSuccess = false;
 }
 
 #pragma mark - Levels
-- (NSString *)level1 {
+- (NSString *)addOrSubtractQuestionWithLevel:(int)level {
     int firstNum;
     int secondNum;
     NSString *questionStr;
-    firstNum = arc4random_uniform(10);
-    secondNum = arc4random_uniform(10);
+
+    switch (level) {
+        case 2:
+            firstNum = arc4random_uniform(1000);
+            secondNum = arc4random_uniform(1000);
+            break;
+        case 3:
+            firstNum = arc4random_uniform(100);
+            secondNum = arc4random_uniform(100);
+            break;
+        default:
+            firstNum = arc4random_uniform(10);
+            secondNum = arc4random_uniform(10);
+            break;
+    }
+    
     int r = arc4random_uniform(2);
     if (r == 0) {
         answar = firstNum + secondNum;
@@ -423,75 +445,22 @@ bool isGameEndSuccess = false;
     return [NSString stringWithFormat:questionStr, firstNum, secondNum];
 }
 
-- (NSString *)level2 {
+- (NSString *)multiplyOrDivideQuestionWithLevel:(int)level {
     int firstNum;
     int secondNum;
     NSString *questionStr;
-    firstNum = arc4random_uniform(100);
-    secondNum = arc4random_uniform(100);
-    int r = arc4random_uniform(2);
-    if (r == 0) {
-        answar = firstNum + secondNum;
-        questionStr = @"%d+%d=?";
-    } else {
-        answar = firstNum - secondNum;
-        questionStr = @"%d-%d=?";
+    
+    switch (level) {
+        case 0:
+            firstNum = arc4random_uniform(100);
+            secondNum = arc4random_uniform(100);
+            break;
+        default:
+            firstNum = arc4random_uniform(10);
+            secondNum = arc4random_uniform(10);
+            break;
     }
     
-    return [NSString stringWithFormat:questionStr, firstNum, secondNum];
-}
-
-- (NSString *)level3 {
-    int firstNum;
-    int secondNum;
-    NSString *questionStr;
-    firstNum = arc4random_uniform(1000);
-    secondNum = arc4random_uniform(1000);
-    int r = arc4random_uniform(2);
-    if (r == 0) {
-        answar = firstNum + secondNum;
-        questionStr = @"%d+%d=?";
-    } else {
-        answar = firstNum - secondNum;
-        questionStr = @"%d-%d=?";
-    }
-    
-    return [NSString stringWithFormat:questionStr, firstNum, secondNum];
-}
-
-- (NSString *)level4 {
-    int firstNum;
-    int secondNum;
-    NSString *questionStr;
-    firstNum = arc4random_uniform(10);
-    secondNum = arc4random_uniform(10);
-    int r = arc4random_uniform(2);
-    if (r == 0) {
-        answar = firstNum * secondNum;
-        questionStr = @"%dx%d=?";
-    } else {
-        if (secondNum > firstNum) {
-            int tmp = firstNum;
-            firstNum = secondNum;
-            secondNum = tmp;
-        }
-        if (secondNum == 0) {
-            secondNum = 1;
-        }
-        answar = firstNum / secondNum;
-        questionStr = @"%d÷%d=?";
-        
-    }
-    
-    return [NSString stringWithFormat:questionStr, firstNum, secondNum];
-}
-
-- (NSString *)level5 {
-    int firstNum;
-    int secondNum;
-    NSString *questionStr;
-    firstNum = arc4random_uniform(100);
-    secondNum = arc4random_uniform(100);
     int r = arc4random_uniform(2);
     if (r == 0) {
         answar = firstNum * secondNum;
@@ -536,15 +505,15 @@ bool isGameEndSuccess = false;
         
         NSString *questionString;
         if (questionType == 0) {
-            questionString = [self level5];
+            questionString = [self multiplyOrDivideQuestionWithLevel:questionType];
         } else if (questionType == 1) {
-            questionString = [self level4];
+            questionString = [self multiplyOrDivideQuestionWithLevel:questionType];
         } else if (questionType == 2) {
-            questionString = [self level3];
+            questionString = [self addOrSubtractQuestionWithLevel:questionType];
         } else if (questionType == 3) {
-            questionString = [self level2];
+            questionString = [self addOrSubtractQuestionWithLevel:questionType];
         } else {
-            questionString = [self level1];
+            questionString = [self addOrSubtractQuestionWithLevel:questionType];
         }
         
         Boolean isHasTheSameNum = false;
@@ -574,15 +543,15 @@ bool isGameEndSuccess = false;
         for (int i = 0; i < 3; i++) {
             NSString *questionString;
             if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL5_START_LEVEL) {
-                questionString = [self level5];
+                questionString = [self multiplyOrDivideQuestionWithLevel:0];
             } else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL4_START_LEVEL) {
-                questionString = [self level4];
+                questionString = [self multiplyOrDivideQuestionWithLevel:1];
             } else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL3_START_LEVEL) {
-                questionString = [self level3];
+                questionString = [self addOrSubtractQuestionWithLevel:2];
             } else if (answerCorrectNUm >= GAME_TIME_LIMIT_LEVEL2_START_LEVEL) {
-                questionString = [self level2];
+                questionString = [self addOrSubtractQuestionWithLevel:3];
             } else {
-                questionString = [self level1];
+                questionString = [self addOrSubtractQuestionWithLevel:4];
             }
             
             answars[i] = answar;

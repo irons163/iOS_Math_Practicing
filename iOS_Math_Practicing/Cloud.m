@@ -15,7 +15,7 @@
     self.numNode = [SKLabelNode labelNodeWithText:[NSString stringWithFormat:@"%d", num]];
     self.numNode.fontColor = [UIColor greenColor];
     self.numNode.fontName = @"Blod";
-    self.numNode.fontSize = 25;
+    self.numNode.fontSize = 27;
     self.numNode.position = CGPointMake(self.numNode.position.x, self.numNode.position.y - self.numNode.frame.size.height/2.0f);
     [self addChild:self.numNode];
 }
