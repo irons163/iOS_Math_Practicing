@@ -11,8 +11,6 @@
 #import "GameOverViewController.h"
 #import "GameWinViewController.h"
 
-@import iAd;
-
 extern const int NORMAL_MODE;
 extern const int BREAK_GAME_MODE;
 extern const int TIME_LIMIT_MODE;
@@ -30,6 +28,6 @@ extern const int TIME_LIMIT_MODE;
 - (void)pauseGame;
 @end
 
-@interface ViewController : UIViewController<gameDelegate,pauseGameDelegate,ADBannerViewDelegate>
+@interface ViewController : UIViewController<gameDelegate,pauseGameDelegate>
 
 @end

@@ -68,16 +68,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQM-yq-KfO">
-                                <rect key="frame" x="107" y="493" width="104" height="27"/>
+                                <rect key="frame" x="107" y="493" width="110" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="YwS-34-aYH"/>
+                                    <constraint firstAttribute="width" constant="110" id="YwS-34-aYH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0RF-D3-1vl">
-                                <rect key="frame" x="221" y="496" width="88" height="24"/>
+                                <rect key="frame" x="227" y="496" width="88" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="tWn-t4-94T"/>
                                 </constraints>
@@ -153,16 +153,16 @@
                                 </variation>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHP-19-OXW">
-                                <rect key="frame" x="107" y="493" width="104" height="27"/>
+                                <rect key="frame" x="107" y="493" width="110" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="uHa-uG-aRl"/>
+                                    <constraint firstAttribute="width" constant="110" id="uHa-uG-aRl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3a-pC-H1b">
-                                <rect key="frame" x="221" y="496" width="88" height="24"/>
+                                <rect key="frame" x="227" y="496" width="88" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="XzW-oj-Mmh"/>
                                 </constraints>
