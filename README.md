@@ -9,7 +9,7 @@
 ### You can use the codes to do what ever you want, instead of using the images and musics.
 
 ## Apple Store
-![Game URL in Apple Store](https://apps.apple.com/us/app/shoot-learning-math/id1025414483)
+[Game URL in Apple Store](https://apps.apple.com/us/app/shoot-learning-math/id1025414483)
 
 ## Description
 
